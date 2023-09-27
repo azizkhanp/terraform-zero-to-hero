@@ -1,14 +1,14 @@
 # Define the AWS provider configuration.
 provider "aws" {
-  region = "us-east-1"  # Replace with your desired AWS region.
+  region = "us-east-2"  # Replace with your desired AWS region.
 }
 
 variable "cidr" {
   default = "10.0.0.0/16"
 }
 
-resource "aws_key_pair" "example" {
-  key_name   = "terraform-demo-abhi"  # Replace with your desired key name
+resource "aws_key_pair" "mykey" {
+  key_name   = "mykey"  # Replace with your desired key name
   public_key = file("~/.ssh/id_rsa.pub")  # Replace with the path to your public key file
 }
 
@@ -19,7 +19,7 @@ resource "aws_vpc" "myvpc" {
 resource "aws_subnet" "sub1" {
   vpc_id                  = aws_vpc.myvpc.id
   cidr_block              = "10.0.0.0/24"
-  availability_zone       = "us-east-1a"
+  availability_zone       = "us-east-2a"
   map_public_ip_on_launch = true
 }
 
